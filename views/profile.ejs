@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../stylesheets/profile.css" />
+    <title>Profile</title>
+</head>
+
+<body>
+    <div class="container">
+        <img class="imgs" src="../images/logo 5 copy.jpg" />
+        <p class="fullname">
+            <%=user.fullname%>
+        </p>
+        <p>@<%=user.username%>
+        </p>
+        <p>tagline</p>
+        <p>description</p>
+
+        <form action="/upload" method="post" enctype="multipart/form-data" class="form">
+            <input type="file" name="file">
+            <input type="text" name="postCaption" placeholder="Write caption here">
+            <button type="submit">Upload</button>
+        </form>
+        <a class="btn int" href="/logout">Log Out</a>
+    </div>
+
+    <div class="grid">
+        <% user.posts.forEach(function(posts){%>
+        <div class="box"> 
+            <img src="/images/uploads/<%=posts.image%>" alt="" />
+            <p><%=posts.postText%></p>
+        </div>
+        <%})%>
+    </div>
+</body>
+
+</html>
